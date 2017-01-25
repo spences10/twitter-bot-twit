@@ -1,0 +1,15 @@
+{
+  "name": "twitter-bot-twit",
+  "version": "0.0.1",
+  "description": "twitter bot using twit",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Scott Spence",
+  "license": "MIT",
+  "dependencies": {
+    "twit": "^2.2.5",
+    "unique-random-array": "^1.0.0"
+  }
+}
