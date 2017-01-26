@@ -7,12 +7,13 @@ var strings = require('./helpers/strings')
 var Twitter = new twit(config)
 
 // Frequency in minutes
-var retweetFrequency = 2.5
-var favoriteFrequency = 2.5
+var retweetFrequency = 5
+var favoriteFrequency = 5
 
 // RANDOM QUERY STRING  =========================
 
 var qs = ura(strings.queryString)
+var qsSq = ura(strings.queryStringSubQuery)
 var rt = ura(strings.resultType)
 var rs = ura(strings.responseString)
 
@@ -29,30 +30,31 @@ var rs = ura(strings.responseString)
 // * recent : return only the most recent results in the response
 // * popular : return only the most popular results in the response.
 
-var retweet = function () {
+var retweet = function() {
     var paramQS = qs()
-    paramQS += ' ' + qs()
+    paramQS += qsSq()
     var paramRT = rt()
     var params = {
         q: paramQS,
         result_type: paramRT,
         lang: 'en'
     };
-    Twitter.get('search/tweets', params, function (err, data) {
+    Twitter.get('search/tweets', params, function(err, data) {
         // if there no errors
         if (!err) {
             // grab ID of tweet to retweet
             try {
                 // try get tweet id, derp if not
                 var retweetId = data.statuses[0].id_str
-            } catch (e) {
-                console.log('retweetId DERP! ', e.message)
+            }
+            catch (e) {
+                console.log('retweetId DERP! ', e.message, ' Query String: ' + paramQS)
                 return;
             }
             // Tell TWITTER to retweet
             Twitter.post('statuses/retweet/:id', {
                 id: retweetId
-            }, function (err, response) {
+            }, function(err, response) {
                 if (response) {
                     console.log('RETWEETED!', ' Query String: ' + paramQS)
                 }
@@ -71,15 +73,15 @@ var retweet = function () {
 
 // retweet on bot start
 retweet()
-// retweet in every x minutes
+    // retweet in every x minutes
 setInterval(retweet, 60000 * retweetFrequency)
 
 // FAVORITE BOT====================
 
 // find a random tweet and 'favorite' it
-var favoriteTweet = function () {
+var favoriteTweet = function() {
     var paramQS = qs()
-    paramQS += ' ' + qs()
+    paramQS += qsSq()
     var paramRT = rt()
     var params = {
         q: paramQS,
@@ -88,7 +90,7 @@ var favoriteTweet = function () {
     }
 
     // find the tweet
-    Twitter.get('search/tweets', params, function (err, data) {
+    Twitter.get('search/tweets', params, function(err, data) {
 
         // find tweets
         var tweet = data.statuses;
@@ -99,11 +101,12 @@ var favoriteTweet = function () {
             // Tell TWITTER to 'favorite'
             Twitter.post('favorites/create', {
                 id: randomTweet.id_str
-            }, function (err, response) {
+            }, function(err, response) {
                 // if there was an error while 'favorite'
                 if (err) {
                     console.log('CANNOT BE FAVORITE... Error: ', err, ' Query String: ' + paramQS)
-                } else {
+                }
+                else {
                     console.log('FAVORITED... Success!!!', ' Query String: ' + paramQS)
                 }
             })
@@ -113,7 +116,7 @@ var favoriteTweet = function () {
 
 // favorite on bot start
 favoriteTweet()
-// favorite in every x minutes
+    // favorite in every x minutes
 setInterval(favoriteTweet, 60000 * favoriteFrequency)
 
 // STREAM API for interacting with a USER =======
@@ -128,7 +131,7 @@ stream.on('follow', followed)
 // ...trigger the callback
 function followed(event) {
     console.log('Follow Event now RUNNING')
-    // get USER's twitter handle (screen name)
+        // get USER's twitter handle (screen name)
     var screenName = event.source.screen_name
 
     // CREATE RANDOM RESPONSE  ============================
@@ -154,11 +157,13 @@ function tweetNow(tweetTxt) {
 
     if (n != -1) {
         console.log('TWEET SELF! Skipped!!')
-    } else {
-        Twitter.post('statuses/update', tweet, function (err, data, response) {
+    }
+    else {
+        Twitter.post('statuses/update', tweet, function(err, data, response) {
             if (err) {
                 console.log('Cannot Reply to Follower. ERROR!: ' + err)
-            } else {
+            }
+            else {
                 console.log('Reply to follower. SUCCESS!')
             }
         })
