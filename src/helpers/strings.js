@@ -30,7 +30,7 @@ module.exports = {
         ' best practices',
         ' handy tip',
         ' interesting',
-        ' learninig',
+        ' learning',
         ' rant',
         ' workshop',
         ' hackathon',
