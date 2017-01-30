@@ -23,7 +23,10 @@ module.exports = {
         'conditionerjs',
         'svelte.js',
         'sveltejs',
-        'docker'
+        'docker',
+        'ionic',
+        '.json',
+        'blockchain'
     ],
     queryStringSubQuery: [
         '',
