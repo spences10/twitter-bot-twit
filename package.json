@@ -8,6 +8,9 @@
     "twit": "2.2.5",
     "unique-random-array": "1.0.0"
   },
+  "now": {
+    "alias": "scott-bot"
+  },
   "devDependencies": {},
   "scripts": {
     "start": "node index.js"
