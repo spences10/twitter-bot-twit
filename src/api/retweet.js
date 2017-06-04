@@ -16,7 +16,8 @@ const retweet = () => {
     result_type: param.resultType,
     lang: param.language,
     filter: 'safe',
-    count: param.searchCount
+    count: param.searchCount,
+    exclude: 'replies'
   }, (err, data, response) => {
     if (err) {
       console.log('ERRORDERP: Cannot Search Tweet!, Description here: ', err)
