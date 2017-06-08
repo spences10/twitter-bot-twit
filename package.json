@@ -3,13 +3,31 @@
   "version": "0.0.1",
   "description": "twitter bot using twit",
   "main": "index.js",
+  "dependencies": {
+    "dotenv": "4.0.0",
+    "twit": "2.2.5",
+    "unique-random-array": "1.0.0"
+  },
+  "now": {
+    "alias": "scott-bot"
+  },
+  "devDependencies": {},
   "scripts": {
     "start": "node index.js"
   },
-  "author": "Scott Spence",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spences10/twitter-bot-twit.git"
+  },
+  "keywords": [
+    "personal",
+    "twitter",
+    "bot"
+  ],
+  "author": "Scott Spence <spences10apps@gmail.com> (https://spences10.github.io/)",
   "license": "MIT",
-  "dependencies": {
-    "twit": "^2.2.5",
-    "unique-random-array": "^1.0.0"
-  }
+  "bugs": {
+    "url": "https://github.com/spences10/twitter-bot-twit/issues"
+  },
+  "homepage": "https://github.com/spences10/twitter-bot-twit#readme"
 }

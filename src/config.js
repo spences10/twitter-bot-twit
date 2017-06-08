@@ -1,24 +1,21 @@
-/** TWITTER APP CONFIGURATION
- * consumer_key
- * consumer_secret
- * access_token
- * access_token_secret
- */
-
-// Uncomment for when deploying to Heroku
-
-// module.exports = {
-//   consumer_key: process.env.CONSUMER_KEY,
-//   consumer_secret: process.env.CONSUMER_SECRET,
-//   access_token: process.env.ACCESS_TOKEN,
-//   access_token_secret: process.env.ACCESS_TOKEN_SECRET,
-// };
+require('dotenv').config()
 
 module.exports = {
-  consumer_key: '',
-  consumer_secret: '',
-  access_token: '',
-  access_token_secret: '',
-};
-
-
+  twitterKeys: {
+    consumer_key: process.env.TWITTER_CONSUMER_KEY,
+    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+    access_token: process.env.TWITTER_ACCESS_TOKEN,
+    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+  },
+  twitterConfig: {
+    queryString: process.env.QUERY_STRING,
+    resultType: process.env.RESULT_TYPE,
+    language: process.env.LANG,
+    username: process.env.TWITTER_USERNAME,
+    retweet: process.env.TWITTER_RETWEET_RATE * 1000 * 60,
+    like: process.env.TWITTER_LIKE_RATE * 1000 * 60,
+    quote: process.env.TWITTER_QUOTE_RATE * 1000 * 60,
+    searchCount: process.env.TWITTER_SEARCH_COUNT,
+    randomReply: process.env.RANDOM_REPLY
+  }
+}
