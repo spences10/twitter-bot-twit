@@ -13,6 +13,7 @@ module.exports = {
     language: process.env.LANG,
     username: process.env.TWITTER_USERNAME,
     retweet: process.env.TWITTER_RETWEET_RATE * 1000 * 60,
+    follow: process.env.TWITTER_FOLLOW_RATE * 1000 * 60,
     like: process.env.TWITTER_LIKE_RATE * 1000 * 60,
     quote: process.env.TWITTER_QUOTE_RATE * 1000 * 60,
     searchCount: process.env.TWITTER_SEARCH_COUNT,
