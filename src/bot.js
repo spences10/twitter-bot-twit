@@ -10,15 +10,15 @@ const retweet = require('./api/retweet')
 const follow = require('./api/follow')
 const reply = require('./api/reply')
 
-// retweet on keywords
-retweet()
-setInterval(retweet, config.twitterConfig.retweet)
+// // retweet on keywords
+// retweet()
+// setInterval(retweet, config.twitterConfig.retweet)
 
 // retweet on keywords
 follow()
 setInterval(follow, config.twitterConfig.follow)
 
-// reply to new follower
-const userStream = bot.stream('user')
-userStream.on('follow', reply)
+// // reply to new follower
+// const userStream = bot.stream('user')
+// userStream.on('follow', reply)
 
