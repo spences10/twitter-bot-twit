@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "dotenv": "4.0.0",
+    "nodemon": "1.11.0",
     "twit": "2.2.5",
     "unique-random-array": "1.0.0"
   },
@@ -13,7 +14,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
