@@ -28,12 +28,12 @@ const follow = () => {
         // console.log(screen_name)
 
         const d = new Date()
-        d.getMonth(d.getMonth() - 12)
+        d.getMonth(d.getMonth() - 1)
         // console.log(`Month is ${d.toISOString()}`)
         
         bot.get('search/tweets', {
           q: `from:@${screen_name} since:${d.toISOString()}`,
-          count: 10
+          count: 5
         }, (err, data, res) => {
           if (err) {
             console.log('ERRORDERP: ', err)
@@ -45,7 +45,7 @@ const follow = () => {
               // get follow keywords
               const followKeywordsEndpoint = 'https://gist.githubusercontent.com/spences10/d21c8b869f3e9ccdcb12e61cd8d2ed03/raw/d428b883f838e91bd2f83e6a81b99b09a16b7b33/interest-profile-keywords.json'
 
-              const getWords = async (url) => {
+              let getWords = async (url) => {
                 const response = await fetch(url)
                 return await response.json()
               }
@@ -53,17 +53,24 @@ const follow = () => {
               getWords(avoidKeywordsEndpoint)
                 .then(word => {
                   const arrAvoid = Object.values(word)
-                  console.log(typeof arrAvoid)
+                                  
+                  let len = arrAvoid.length;
+
+                  while(len--) {
+                    if (s.text.indexOf(arrAvoid[len])!==-1) {
+                      console.log('matches: ', arrAvoid[len])
+                    }
+                  }
                 })
 
-              getWords(followKeywordsEndpoint)
-                .then(word => {
-                  console.log(word)
-                })
+              // getWords(followKeywordsEndpoint)
+              //   .then(word => {
+              //     console.log(word)
+              //   })
               
-              console.log(s.text)
-              console.log(s.user.screen_name)
-              console.log('\n')
+              // console.log(s.text)
+              // console.log(s.user.screen_name)
+              // console.log('\n')
             })
           }
         })
