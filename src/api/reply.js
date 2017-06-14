@@ -4,6 +4,7 @@ const config = require('../config')
 
 const param = config.twitterConfig
 const randomReply = unique(param.randomReply.split('|'))
+const randomEmoji = unique(param.randomEmoji.split(','))
 
 const bot = new Twit(config.twitterKeys)
 
@@ -25,8 +26,10 @@ function tweetNow(text) {
 const reply = (event) => {
   // get user's twitter handler/screen name
   let screenName = event.source.screen_name
-
-  const response = randomReply()
+  if (screenName==config.twitterConfig.username) {
+    return
+  }
+  const response = randomReply() + randomEmoji()
 
   const res = response.replace('${screenName}', screenName);
 
