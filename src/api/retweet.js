@@ -10,7 +10,7 @@ const bot = new Twit(config.twitterKeys)
 const retweet = () => {
 
   const query = queryString()
-
+  console.log('RT QUERY: ', query)
   bot.get('search/tweets', {
     q: query,
     result_type: param.resultType,

@@ -26,6 +26,8 @@ function tweetNow(text) {
 const reply = (event) => {
   // get user's twitter handler/screen name
   let screenName = event.source.screen_name
+  console.log('EVENT SCREEN NAME: ', screenName)
+  console.log('CONFIG SCREEN NAME: ', config.twitterConfig.username)
   if (screenName==config.twitterConfig.username) {
     return
   }
