@@ -32,8 +32,8 @@ const follow = () => {
         // console.log(`Month is ${d.toISOString()}`)
         
         bot.get('search/tweets', {
-          q: `from:@${screen_name} since:${d.toISOString()}`,
-          count: 5
+          q: `from:@${screen_name}`,
+          count: 20
         }, (err, data, res) => {
           if (err) {
             console.log('ERRORDERP: ', err)
@@ -59,6 +59,7 @@ const follow = () => {
                   while(len--) {
                     if (s.text.indexOf(arrAvoid[len])!==-1) {
                       console.log('matches: ', arrAvoid[len])
+                      console.log('user: ', s.user.screen_name)
                     }
                   }
                 })
