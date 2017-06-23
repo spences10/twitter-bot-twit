@@ -8,41 +8,50 @@ const queryString = unique(param.queryString.split(','))
 const bot = new Twit(config.twitterKeys)
 
 const retweet = () => {
-
   const query = queryString()
   console.log('RT QUERY: ', query)
-  bot.get('search/tweets', {
-    q: query,
-    result_type: param.resultType,
-    lang: param.language,
-    filter: 'safe',
-    count: param.searchCount,
-    exclude: 'replies'
-  }, (err, data, response) => {
-    if (err) {
-      console.log('ERRORDERP: Cannot Search Tweet!, Description here: ', err)
-    } else {
-      // grab tweet ID to retweet
-      const rando = Math.floor(Math.random() * param.searchCount) + 1
-      let retweetId
+  bot.get(
+    'search/tweets',
+    {
+      q: query,
+      result_type: param.resultType,
+      lang: param.language,
+      filter: 'safe',
+      count: param.searchCount,
+      exclude: 'replies'
+    },
+    (err, data, response) => {
+      if (err) {
+        console.log('ERRORDERP: Cannot Search Tweet!, Description here: ', err)
+      } else {
+        for (let i = 0; i < data.statuses.length; i++) {
+          let retweeID
+          try {
+            retweetId = { id: data.statuses[i].id_str }
+          } catch (e) {
+            console.log('ERRORDERP: RT Err: ', e)
+            return
+          }
 
-      try {
-        retweetId = data.statuses[rando].id_str      
-      } catch (e) {
-        console.log('ERRORDERP: Cannot assign retweeID')
-        return
-      }
-
-      bot.post('statuses/retweet/:id', {
-        id: retweetId
-      }, (err, response) => {
-        if (err) {
-          console.log('ERRORDERP: Retweet!')
+          bot.post(
+            'statuses/retweet/:id',
+            {
+              id: retweetId
+            },
+            (err, response) => {
+              if (err) {
+                console.log('ERRORDERP: Retweet!')
+              }
+              console.log(
+                'SUCCESS: RT: ',
+                data.statuses[i].text
+              )
+            }
+          )
         }
-        console.log('SUCCESS: RT: ', data.statuses[rando].text, 'RANDO ID: ', rando)
-      })
+      }
     }
-  })
+  )
 }
 
 module.exports = retweet

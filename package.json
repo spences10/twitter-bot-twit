@@ -13,7 +13,9 @@
   "now": {
     "alias": "scott-bot"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "1.4.4"
+  },
   "scripts": {
     "start": "nodemon index.js"
   },
