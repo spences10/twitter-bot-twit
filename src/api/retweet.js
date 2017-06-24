@@ -33,21 +33,22 @@ const retweet = () => {
             return
           }
 
-          bot.post(
-            'statuses/retweet/:id',
-            {
-              id: retweetId
-            },
-            (err, response) => {
-              if (err) {
-                console.log('ERRORDERP: Retweet!')
-              }
-              console.log(
-                'SUCCESS: RT: ',
-                data.statuses[i].text
-              )
-            }
-          )
+          console.log(data.statuses[i].text)
+          // bot.post(
+          //   'statuses/retweet/:id',
+          //   {
+          //     id: retweetId
+          //   },
+          //   (err, response) => {
+          //     if (err) {
+          //       console.log('ERRORDERP: Retweet!')
+          //     }
+          //     console.log(
+          //       'SUCCESS: RT: ',
+          //       data.statuses[i].text
+          //     )
+          //   }
+          // )
         }
       }
     }
