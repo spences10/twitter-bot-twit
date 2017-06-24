@@ -10,13 +10,13 @@ const bot = new Twit(config.twitterKeys)
 const retweet = require('./api/retweet')
 const follow = require('./api/follow')
 const reply = require('./api/reply')
+const track = require('./api/track')
 
-// retweet on keywords
-retweet()
-setInterval(retweet, config.twitterConfig.retweet)
+// // retweet on keywords
+// retweet()
+// setInterval(retweet, config.twitterConfig.retweet)
 
-getWords()
-
+// console.log(getWords())
 
 // // follow on keywords
 // follow()
@@ -26,3 +26,15 @@ getWords()
 // const userStream = bot.stream('user')
 // userStream.on('follow', reply)
 
+// track the things
+// const filterStream = bot.stream('statuses/filter', { track: ['node'] })
+// filterStream.on('tweet', track)
+
+const param = config.twitterConfig
+const trackWords = param.queryString.split(',')
+
+const stream = bot.stream('statuses/filter', {
+  track: trackWords
+});
+
+stream.on('tweet', track)
