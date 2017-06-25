@@ -3,7 +3,7 @@
 // is no longer allowed, so:
 const Twit = require('twit')
 const config = require('./config')
-const { getWords } = require('./helpers/keywords')
+const keywords = require('./helpers/keywords')
 
 const bot = new Twit(config.twitterKeys)
 
@@ -16,11 +16,11 @@ const track = require('./api/track')
 // retweet()
 // setInterval(retweet, config.twitterConfig.retweet)
 
-// console.log(getWords())
+// console.log(keywords.getWords())
 
-// // follow on keywords
-// follow()
-// setInterval(follow, config.twitterConfig.follow)
+// follow on keywords
+follow()
+setInterval(follow, config.twitterConfig.follow)
 
 // // reply to new follower
 // const userStream = bot.stream('user')
@@ -30,11 +30,11 @@ const track = require('./api/track')
 // const filterStream = bot.stream('statuses/filter', { track: ['node'] })
 // filterStream.on('tweet', track)
 
-const param = config.twitterConfig
-const trackWords = param.queryString.split(',')
+// const param = config.twitterConfig
+// const trackWords = param.queryString.split(',')
 
-const stream = bot.stream('statuses/filter', {
-  track: trackWords
-});
+// const stream = bot.stream('statuses/filter', {
+//   track: trackWords
+// });
 
-stream.on('tweet', track)
+// stream.on('tweet', track)

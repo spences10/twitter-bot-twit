@@ -1,10 +1,6 @@
 const fetch = require('node-fetch')
 
-const followKeywordsEndpoint =
-  'https://gist.githubusercontent.com/spences10/d21c8b869f3e9ccdcb12e61cd8d2ed03/raw/d428b883f838e91bd2f83e6a81b99b09a16b7b33/interest-profile-keywords.json'
-
 exports.getWords = async () => {
-
   const showWords = async url => {
     const response = await fetch(url)
     return await response.json()
@@ -12,9 +8,10 @@ exports.getWords = async () => {
 
   const avoidWords =
     'https://gist.githubusercontent.com/spences10/d21c8b869f3e9ccdcb12e61cd8d2ed03/raw/d428b883f838e91bd2f83e6a81b99b09a16b7b33/avoid-profile-keywords.json'
-  showWords(avoidWords)
+
+  return await showWords(avoidWords)
     .then(word => {
     // console.log(word)
-    return showWords(avoidWords)
+    return word
   })
 }
