@@ -16,25 +16,21 @@ const track = require('./api/track')
 // retweet()
 // setInterval(retweet, config.twitterConfig.retweet)
 
-// console.log(keywords.getWords())
+keywords.getWords().then(x => console.log(x))
 
-// follow on keywords
-follow()
-setInterval(follow, config.twitterConfig.follow)
+// // follow on keywords
+// follow()
+// setInterval(follow, config.twitterConfig.follow)
 
 // // reply to new follower
 // const userStream = bot.stream('user')
 // userStream.on('follow', reply)
 
-// track the things
-// const filterStream = bot.stream('statuses/filter', { track: ['node'] })
-// filterStream.on('tweet', track)
+const param = config.twitterConfig
+const trackWords = param.queryString.split(',')
 
-// const param = config.twitterConfig
-// const trackWords = param.queryString.split(',')
-
-// const stream = bot.stream('statuses/filter', {
-//   track: trackWords
-// });
-
-// stream.on('tweet', track)
+// use stream to track keywords
+const stream = bot.stream('statuses/filter', {
+  track: trackWords
+})
+stream.on('tweet', track)
