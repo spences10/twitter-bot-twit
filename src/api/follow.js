@@ -42,7 +42,7 @@ const follow = () => {
               if (err) {
                 console.log('ERRORDERP: ', err)
               } else {
-                data.statuses.forEach(s => {
+                data.statuses.forEach((s) => {
                   // get avoid keywords
                   const avoidKeywordsEndpoint =
                     'https://gist.githubusercontent.com/spences10/d21c8b869f3e9ccdcb12e61cd8d2ed03/raw/d428b883f838e91bd2f83e6a81b99b09a16b7b33/avoid-profile-keywords.json'
@@ -51,12 +51,12 @@ const follow = () => {
                   const followKeywordsEndpoint =
                     'https://gist.githubusercontent.com/spences10/d21c8b869f3e9ccdcb12e61cd8d2ed03/raw/d428b883f838e91bd2f83e6a81b99b09a16b7b33/interest-profile-keywords.json'
 
-                  let getWords = async url => {
+                  let getWords = async (url) => {
                     const response = await fetch(url)
                     return await response.json()
                   }
 
-                  getWords(avoidKeywordsEndpoint).then(word => {
+                  getWords(avoidKeywordsEndpoint).then((word) => {
                     const arrAvoid = Object.values(word)
 
                     let len = arrAvoid.length
@@ -69,7 +69,7 @@ const follow = () => {
                     }
                   })
 
-                  getWords(followKeywordsEndpoint).then(word => {
+                  getWords(followKeywordsEndpoint).then((word) => {
                     const arrFollow = Object.values(word)
 
                     let len = arrFollow.length
