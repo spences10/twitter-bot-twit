@@ -3,20 +3,26 @@
 // is no longer allowed, so:
 const Twit = require('twit')
 const config = require('./config')
+const keywords = require('./helpers/keywords')
 
 const bot = new Twit(config.twitterKeys)
 
-const retweet = require('./api/retweet')
+const follow = require('./api/follow')
 const reply = require('./api/reply')
+const track = require('./api/track')
 
-// retweet on keywords
-retweet()
-setInterval(retweet, config.twitterConfig.retweet)
+// keywords.getWords().then(x => console.log(x))
 
 // reply to new follower
 const userStream = bot.stream('user')
 userStream.on('follow', reply)
 
-// when new user follows serch their stream like
-// some tweets that match search terms and follow
-// https://github.com/jimkang/filtered-followback
+const param = config.twitterConfig
+const trackWords = param.queryString.split(',')
+
+// use stream to track keywords
+const trackStream = bot.stream('statuses/filter', {
+  track: trackWords
+})
+trackStream.on('tweet', track) // retweet
+trackStream.on('tweet', follow) // follow

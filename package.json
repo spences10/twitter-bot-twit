@@ -5,15 +5,19 @@
   "main": "index.js",
   "dependencies": {
     "dotenv": "4.0.0",
-    "twit": "2.2.5",
+    "node-fetch": "1.7.1",
+    "nodemon": "1.11.0",
+    "twit": "2.2.9",
     "unique-random-array": "1.0.0"
   },
   "now": {
     "alias": "scott-bot"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "1.4.4"
+  },
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
