@@ -7,20 +7,11 @@ const keywords = require('./helpers/keywords')
 
 const bot = new Twit(config.twitterKeys)
 
-const retweet = require('./api/retweet')
 const follow = require('./api/follow')
 const reply = require('./api/reply')
 const track = require('./api/track')
 
-// // retweet on keywords
-// retweet()
-// setInterval(retweet, config.twitterConfig.retweet)
-
 // keywords.getWords().then(x => console.log(x))
-
-// // follow on keywords
-// follow()
-// setInterval(follow, config.twitterConfig.follow)
 
 // reply to new follower
 const userStream = bot.stream('user')
@@ -30,8 +21,8 @@ const param = config.twitterConfig
 const trackWords = param.queryString.split(',')
 
 // use stream to track keywords
-const stream = bot.stream('statuses/filter', {
+const trackStream = bot.stream('statuses/filter', {
   track: trackWords
 })
-stream.on('tweet', track)
-stream.on('tweet', follow)
+trackStream.on('tweet', track) // retweet
+trackStream.on('tweet', follow) // follow
