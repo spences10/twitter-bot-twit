@@ -14,8 +14,8 @@ const track = require('./api/track')
 // keywords.getWords().then(x => console.log(x))
 
 // reply to new follower
-const userStream = bot.stream('user')
-userStream.on('follow', reply)
+// const userStream = bot.stream('user')
+// userStream.on('follow', reply)
 
 const param = config.twitterConfig
 const trackWords = param.queryString.split(',')
