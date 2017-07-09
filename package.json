@@ -6,7 +6,6 @@
   "dependencies": {
     "dotenv": "4.0.0",
     "node-fetch": "1.7.1",
-    "nodemon": "1.11.0",
     "twit": "2.2.9",
     "unique-random-array": "1.0.0"
   },
@@ -17,7 +16,8 @@
     "prettier": "1.5.2"
   },
   "scripts": {
-    "start": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
