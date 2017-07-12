@@ -4,6 +4,7 @@
 const Twit = require('twit')
 const config = require('./config')
 const keywords = require('./helpers/keywords')
+const getFollowers = require('./api/unfollow')
 
 const bot = new Twit(config.twitterKeys)
 
@@ -14,7 +15,7 @@ const track = require('./api/track')
 // keywords.getWords().then(x => console.log(x))
 
 // reply to new follower
-// const userStream = bot.stream('user')
+const userStream = bot.stream('user')
 // userStream.on('follow', reply)
 
 const param = config.twitterConfig
@@ -26,3 +27,7 @@ const trackStream = bot.stream('statuses/filter', {
 })
 trackStream.on('tweet', track) // retweet
 trackStream.on('tweet', follow) // follow
+
+// const unfollowStream = bot.stream()
+userStream.on('follow', reply)
+
