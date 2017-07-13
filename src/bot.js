@@ -1,3 +1,6 @@
+// listen on port so now.sh likes it
+const { createServer } = require('http')
+
 // bot features
 // due to the Twitter ToS automation of likes
 // is no longer allowed, so:
@@ -26,3 +29,13 @@ const trackStream = bot.stream('statuses/filter', {
 })
 trackStream.on('tweet', track) // retweet
 trackStream.on('tweet', follow) // follow
+
+// This will cause the bot/server to run on now.sh
+const server = createServer((req, res) => {
+  res.writeHead(302, {
+    Location: `https://twitter.com/${config.twitterConfig.username}`
+  })
+  res.end()
+})
+
+server.listen(3000)
