@@ -100,6 +100,39 @@
 
 // module.exports = getFollowers
 
+// const Twit = require('twit')
+// const config = require('../config')
+// const bot = new Twit(config.twitterKeys)
+
+// const followers = () => {
+//   bot.get(
+//     'followers/ids',
+//     {
+//       screen_name: config.twitterConfig.username,
+//       count: 200
+//     },
+//     function getData(err, data, response) {
+//       for (let i = 0; i < data.length; i++) {
+//         followers.push(data[i])
+//         console.log(data[i])
+//       }
+
+//       if (data['next_cursor'] > 0)
+//         bot.get(
+//           'followers/ids',
+//           {
+//             screen_name: config.twitterConfig.username,
+//             count: 200,
+//             next_cursor: data['next_cursor']
+//           },
+//           getData
+//         )
+//     }
+//   )
+// }
+
+// followers()
+
 const Twit = require('twit')
 const config = require('../config')
 const bot = new Twit(config.twitterKeys)
@@ -111,9 +144,9 @@ bot.get(
     count: 200
   },
   function getData(err, data, response) {
-    console.log('====================')
-    console.log(data)
-    console.log('====================')
+    data.users.forEach((user) => {
+      console.log('loop item: ', user.screen_name)
+    })
 
     // for (let i = 0; i < response.users.length; i++) {
     //   console.log(response.users[i])
