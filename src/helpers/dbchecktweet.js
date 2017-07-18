@@ -15,7 +15,7 @@ const checkTweet = (event) => {
     tweetText: event.text
   }
 
-  request(endpoint, query)
+  request(endpoint, query, variables)
     .then((data) => console.log(data))
     .catch((err) => console.log('Error: ', err, 'Tweet Text: ', event.text, 'Mutation: ', mutation))
 }
