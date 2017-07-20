@@ -1,6 +1,7 @@
 const { request } = require('graphql-request')
+require('dotenv').config()
 
-const endpoint = 'https://api.graph.cool/simple/v1/cj54a2vg7uvcm0196cqwzu8nw'
+const endpoint = process.env.ENDPOINT
 
 // use varibles to avoid breaking text being added
 // https://github.com/graphcool/graphql-request#using-variables

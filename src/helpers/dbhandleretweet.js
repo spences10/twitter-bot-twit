@@ -5,7 +5,7 @@ const handleRetweet = (event) => {
   // console.log(JSON.stringify(event.lang))
   // console.log(JSON.stringify(event))
   checkTweet(event).then((data) => {
-    console.log(data)
+    console.log(data.length)
   })
   addTweet(event)
 }

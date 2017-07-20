@@ -19,5 +19,7 @@ module.exports = {
     searchCount: process.env.TWITTER_SEARCH_COUNT,
     randomReply: process.env.RANDOM_REPLY,
     randomEmoji: process.env.RANDOM_EMOJI
-  }
+  },
+  endpoint: process.env.ENDPOINT,
+  project: process.env.ACCESS_TOKEN
 }
