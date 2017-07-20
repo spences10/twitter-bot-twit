@@ -15,6 +15,7 @@ const reply = require('./api/reply')
 const track = require('./api/track')
 
 const addTweet = require('./helpers/dbaddtweet')
+const checkTweet = require('./helpers/dbchecktweet')
 
 // keywords.getWords().then(x => console.log(x))
 
@@ -29,7 +30,9 @@ const trackWords = param.queryString.split(',')
 const trackStream = bot.stream('statuses/filter', {
   track: trackWords
 })
+trackStream.on('tweet', checkTweet[0])
 trackStream.on('tweet', addTweet)
+
 trackStream.on('tweet', track) // retweet
 trackStream.on('tweet', follow) // follow
 
