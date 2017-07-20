@@ -14,12 +14,12 @@ module.exports = {
     username: process.env.TWITTER_USERNAME,
     retweet: process.env.TWITTER_RETWEET_RATE * 1000 * 60,
     follow: process.env.TWITTER_FOLLOW_RATE * 1000 * 60,
-    like: process.env.TWITTER_LIKE_RATE * 1000 * 60,
-    quote: process.env.TWITTER_QUOTE_RATE * 1000 * 60,
     searchCount: process.env.TWITTER_SEARCH_COUNT,
     randomReply: process.env.RANDOM_REPLY,
     randomEmoji: process.env.RANDOM_EMOJI
   },
-  endpoint: process.env.ENDPOINT,
-  project: process.env.ACCESS_TOKEN
+  graphqlConfig: {
+    endpoint: process.env.ENDPOINT,
+    project: process.env.ACCESS_TOKEN
+  }
 }
