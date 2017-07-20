@@ -15,10 +15,11 @@ const checkTweet = (event) => {
     tweetText: event.text
   }
 
-  request(endpoint, query, variables)
+  return request(endpoint, query, variables)
     .then((data) => {
-      console.log('returning data?')
-      return data
+      // console.log('returning data: ', data.allTweets.length)
+      // console.log(data.allTweets)
+      return data.allTweets
     })
     .catch((err) => console.log('Error: ', err, 'Tweet Text: ', event.text, 'Mutation: ', mutation))
 }
