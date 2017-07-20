@@ -16,6 +16,7 @@ const track = require('./api/track')
 
 const addTweet = require('./helpers/dbaddtweet')
 const checkTweet = require('./helpers/dbchecktweet')
+const handleRetweet = require('./helpers/dbhandleretweet')
 
 // keywords.getWords().then(x => console.log(x))
 
@@ -30,11 +31,12 @@ const trackWords = param.queryString.split(',')
 const trackStream = bot.stream('statuses/filter', {
   track: trackWords
 })
-trackStream.on('tweet', checkTweet[0])
-trackStream.on('tweet', addTweet)
+// trackStream.on('tweet', checkTweet)
+// trackStream.on('tweet', addTweet)
+trackStream.on('tweet', handleRetweet)
 
-trackStream.on('tweet', track) // retweet
-trackStream.on('tweet', follow) // follow
+// trackStream.on('tweet', track) // retweet
+// trackStream.on('tweet', follow) // follow
 
 // This will cause the bot/server to run on now.sh
 const server = createServer((req, res) => {
