@@ -1,7 +1,7 @@
 const { request } = require('graphql-request')
-require('dotenv').config()
+const config = require('../config')
 
-const endpoint = process.env.ENDPOINT
+const endpoint = config.graphqlConfig.endpoint
 
 // use varibles to avoid breaking text being added
 // https://github.com/graphcool/graphql-request#using-variables
