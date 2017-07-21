@@ -1,5 +1,6 @@
 require('dotenv').config()
 const { GraphQLClient } = require('graphql-request')
+
 const client = new GraphQLClient(process.env.ENDPOINT, {
   headers: {
     Authorization: `Bearer ${process.env.ACCESS_TOKEN}`
