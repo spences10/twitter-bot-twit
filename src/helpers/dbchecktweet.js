@@ -19,7 +19,7 @@ const checkTweet = (event) => {
   return request(endpoint, query, variables)
     .then((data) => {
       // console.log('returning data: ', data.allTweets.length)
-      // console.log(data.allTweets)
+      console.log(data.allTweets)
       return data.allTweets
     })
     .catch((err) => console.log('Error: ', err, 'Tweet Text: ', event.text, 'Mutation: ', mutation))

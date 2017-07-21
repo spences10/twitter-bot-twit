@@ -1,8 +1,9 @@
 // here we want to check that the tweet text does not match
 // anything that has already been retweeted
 const { request, GraphQLClient } = require('graphql-request')
+const config = require('../config')
 
-const endpoint = 'https://api.graph.cool/simple/v1/cj54a2vg7uvcm0196cqwzu8nw'
+const endpoint = config.graphqlConfig.endpoint
 
 const queryAllTweets = `{
   allTweets {

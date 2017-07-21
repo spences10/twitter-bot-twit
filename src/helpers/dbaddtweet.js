@@ -18,7 +18,8 @@ const addTweet = (event) => {
   }
 
   request(endpoint, mutation, variables)
-    .then((data) => data) // .then((data) => console.log(data))
+    // .then((data) => data) // .then((data) => console.log(data))
+    .then((data) => console.log(data))
     .catch((err) => console.log('Error: ', err, 'Tweet Text: ', event.text, 'Mutation: ', mutation))
 }
 
