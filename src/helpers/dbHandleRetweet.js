@@ -1,5 +1,5 @@
-const addTweet = require('./dbaddtweet')
-const checkTweet = require('./dbchecktweet')
+const addTweet = require('./dbAddTweet')
+const checkTweet = require('./dbCheckTweet')
 
 const track = require('../api/track')
 const config = require('../config')

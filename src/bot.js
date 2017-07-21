@@ -14,9 +14,9 @@ const follow = require('./api/follow')
 const reply = require('./api/reply')
 const track = require('./api/track')
 
-const addTweet = require('./helpers/dbaddtweet')
-const checkTweet = require('./helpers/dbchecktweet')
-const handleRetweet = require('./helpers/dbhandleretweet')
+const addTweet = require('./helpers/dbAddTweet')
+const checkTweet = require('./helpers/dbCheckTweet')
+const handleRetweet = require('./helpers/dbHandleRetweet')
 
 // keywords.getWords().then(x => console.log(x))
 
