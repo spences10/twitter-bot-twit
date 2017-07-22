@@ -1,7 +1,7 @@
 const addTweet = require('./dbAddTweet')
 const checkTweet = require('./dbCheckTweet')
 
-const track = require('../api/track')
+const retweet = require('../api/retweet')
 const config = require('../config')
 
 const handleRetweet = (event) => {
@@ -12,8 +12,8 @@ const handleRetweet = (event) => {
     let count = data.length
     if (!count >= 0) {
       addTweet(event)
-      // tweet it with track TODO refactor names!
-      track(event)
+      // retweet
+      retweet(event)
     }
   })
 }

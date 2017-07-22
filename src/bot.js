@@ -12,7 +12,7 @@ const bot = new Twit(config.twitterKeys)
 
 const follow = require('./api/follow')
 const reply = require('./api/reply')
-const track = require('./api/track')
+const retweet = require('./api/retweet')
 
 const addTweet = require('./helpers/dbAddTweet')
 const checkTweet = require('./helpers/dbCheckTweet')
@@ -35,7 +35,7 @@ const trackStream = bot.stream('statuses/filter', {
 // trackStream.on('tweet', addTweet)
 trackStream.on('tweet', handleRetweet)
 
-// trackStream.on('tweet', track) // retweet
+// trackStream.on('tweet', retweet) // retweet
 // trackStream.on('tweet', follow) // follow
 
 // This will cause the bot/server to run on now.sh

@@ -3,7 +3,7 @@ const config = require('../config')
 
 const bot = new Twit(config.twitterKeys)
 
-const track = (event) => {
+const retweet = (event) => {
   // console.log(JSON.stringify(event.lang))
   // console.log(JSON.stringify(event))
   // event.source.screen_name
@@ -22,4 +22,4 @@ const track = (event) => {
   }
 }
 
-module.exports = track
+module.exports = retweet
