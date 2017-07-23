@@ -8,7 +8,7 @@ const { request, GraphQLClient } = require('graphql-request')
 const endpoint = config.graphqlConfig.endpoint
 
 const mutation = `mutation {
-  createTweet(tweetText: "Hi", userName: "rando") {
+  createUser(tweetText: "Hi", userName: "rando") {
     id
   }
 }`
