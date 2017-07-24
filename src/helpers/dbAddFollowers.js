@@ -1,8 +1,7 @@
 // items from twitter
-const Twit = require('twit')
 const config = require('../config')
+const Twit = require('twit')
 const bot = new Twit(config.twitterKeys)
-
 const { request, GraphQLClient } = require('graphql-request')
 
 const endpoint = config.graphqlConfig.endpoint
