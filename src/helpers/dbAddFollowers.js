@@ -7,38 +7,48 @@ const { request, GraphQLClient } = require('graphql-request')
 
 const endpoint = config.graphqlConfig.endpoint
 
-const mutation = `mutation {
-  createUser(tweetText: "Hi", userName: "rando") {
-    id
-  }
-}`
+const addFollower = () => {
+  bot.get(
+    'followers/ids',
+    {
+      screen_name: config.twitterConfig.username,
+      count: 200
+    },
+    function getData(err, data, response) {
+      data.users.forEach((user) => {
+        console.log('loop item: ', user.screen_name)
+      })
 
-request(endpoint, mutation).then((data) => console.log(data))
+      for (let i = 0; i < response.users.length; i++) {
+        const mutation = `mutation ($screenName: String!) {
+          createUser(screenName: $screenName) {
+            id
+          }
+        }`
 
-bot.get(
-  'followers/ids',
-  {
-    screen_name: config.twitterConfig.username,
-    count: 200
-  },
-  function getData(err, data, response) {
-    data.users.forEach((user) => {
-      console.log('loop item: ', user.screen_name)
-    })
+        const variables = {
+          screenName: response.users[i]
+        }
 
-    // for (let i = 0; i < response.users.length; i++) {
-    //   console.log(response.users[i])
-    // }
+        request(endpoint, mutation, variables)
+          // .then((data) => data) // .then((data) => console.log(data))
+          .then((data) => console.log(data))
+          .catch((err) => console.log('Error: ', err, 'Tweet Text: ', event.text, 'Mutation: ', mutation))
+        console.log(response.users[i])
+      }
 
-    if (data['next_cursor'] > 0)
-      bot.get(
-        'followers/ids',
-        {
-          screen_name: config.twitterConfig.username,
-          count: 200,
-          next_cursor: data['next_cursor']
-        },
-        getData
-      )
-  }
-)
+      if (data['next_cursor'] > 0)
+        bot.get(
+          'followers/ids',
+          {
+            screen_name: config.twitterConfig.username,
+            count: 200,
+            next_cursor: data['next_cursor']
+          },
+          getData
+        )
+    }
+  )
+}
+
+module.exports = addFollower
