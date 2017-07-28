@@ -17,6 +17,7 @@ const retweet = require('./api/retweet')
 const addTweet = require('./helpers/dbAddTweet')
 const checkTweet = require('./helpers/dbCheckTweet')
 const handleRetweet = require('./helpers/dbHandleRetweet')
+const addFollowers = require('./helpers/dbAddFollowers')
 
 // keywords.getWords().then(x => console.log(x))
 
@@ -33,7 +34,9 @@ const trackStream = bot.stream('statuses/filter', {
 })
 // trackStream.on('tweet', checkTweet)
 // trackStream.on('tweet', addTweet)
-trackStream.on('tweet', handleRetweet)
+// trackStream.on('tweet', handleRetweet)
+
+addFollowers()
 
 // trackStream.on('tweet', retweet) // retweet
 // trackStream.on('tweet', follow) // follow

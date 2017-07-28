@@ -6,7 +6,7 @@ const { request, GraphQLClient } = require('graphql-request')
 
 const endpoint = config.graphqlConfig.endpoint
 
-const addFollower = () => {
+const addFollowers = () => {
   bot.get(
     'followers/ids',
     {
@@ -14,11 +14,15 @@ const addFollower = () => {
       count: 200
     },
     function getData(err, data, response) {
-      data.users.forEach((user) => {
-        console.log('loop item: ', user.screen_name)
-      })
+      console.log('====================')
+      console.log(response)
+      console.log('====================')
+      return
+      // data.users.forEach((user) => {
+      //   console.log('loop item: ', user.screen_name)
+      // })
 
-      for (let i = 0; i < response.users.length; i++) {
+      for (let i = 0; i < data.ids.length; i++) {
         const mutation = `mutation ($screenName: String!) {
           createUser(screenName: $screenName) {
             id
@@ -26,14 +30,14 @@ const addFollower = () => {
         }`
 
         const variables = {
-          screenName: response.users[i]
+          screenName: data.ids[i]
         }
 
         request(endpoint, mutation, variables)
           // .then((data) => data) // .then((data) => console.log(data))
           .then((data) => console.log(data))
           .catch((err) => console.log('Error: ', err, 'Tweet Text: ', event.text, 'Mutation: ', mutation))
-        console.log(response.users[i])
+        console.log(data.ids[i])
       }
 
       if (data['next_cursor'] > 0)
@@ -50,4 +54,4 @@ const addFollower = () => {
   )
 }
 
-module.exports = addFollower
+module.exports = addFollowers
