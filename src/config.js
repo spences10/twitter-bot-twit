@@ -16,7 +16,8 @@ module.exports = {
     follow: process.env.TWITTER_FOLLOW_RATE * 1000 * 60,
     searchCount: process.env.TWITTER_SEARCH_COUNT,
     randomReply: process.env.RANDOM_REPLY,
-    randomEmoji: process.env.RANDOM_EMOJI
+    randomEmoji: process.env.RANDOM_EMOJI,
+    blacklist: process.env.TWITTER_USERNAME_BLACKLIST
   },
   graphqlConfig: {
     endpoint: process.env.ENDPOINT,
