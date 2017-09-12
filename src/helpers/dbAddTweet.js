@@ -13,7 +13,7 @@ const addTweet = (event) => {
   }`
 
   const variables = {
-    tweetText: event.text,
+    tweetText: event.text.replace(/(\s+|^)@\S+/gim, '').replace(/RT/, ''),
     userName: event.user.screen_name
   }
 
