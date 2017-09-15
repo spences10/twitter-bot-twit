@@ -1,5 +1,5 @@
 # project: cj54a2vg7uvcm0196cqwzu8nw
-# version: 3
+# version: 10
 
 type Tweet implements Node {
   tweetText: String!
@@ -24,4 +24,5 @@ type User implements Node {
   createdAt: DateTime!
   id: ID! @isUnique
   updatedAt: DateTime!
+  twitterId: String!
 }
