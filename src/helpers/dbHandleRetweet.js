@@ -1,5 +1,6 @@
 const addTweet = require('./dbAddTweet')
 const checkTweet = require('./dbCheckTweet')
+const isReply = require('./isReply')
 
 const retweet = require('../api/retweet')
 const config = require('../config')
@@ -14,7 +15,7 @@ const handleRetweet = (event) => {
   console.log('====================')
   if (
     event.lang != config.twitterConfig.language ||
-    !event.in_reply_to_status_id ||
+    isReply ||
     blacklist.indexOf(event.screen_name) > -1
   ) {
     return
