@@ -6,7 +6,7 @@
   "dependencies": {
     "dotenv": "5.0.0",
     "graphql-request": "1.4.1",
-    "node-fetch": "2.0.0-alpha.7",
+    "node-fetch": "2.0.0",
     "twit": "2.2.9",
     "unique-random-array": "1.0.0"
   },
