@@ -8,7 +8,7 @@
     "graphql-request": "1.5.1",
     "node-fetch": "2.1.1",
     "twit": "2.2.9",
-    "unique-random-array": "1.0.0"
+    "unique-random-array": "1.0.1"
   },
   "now": {
     "alias": "scott-bot"
