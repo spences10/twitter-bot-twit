@@ -4,7 +4,7 @@
   "description": "twitter bot using twit",
   "main": "index.js",
   "dependencies": {
-    "dotenv": "5.0.1",
+    "dotenv": "6.0.0",
     "graphql-request": "1.6.0",
     "node-fetch": "2.1.2",
     "twit": "2.2.9",
