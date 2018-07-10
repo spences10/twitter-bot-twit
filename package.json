@@ -14,7 +14,7 @@
     "alias": "scott-bot"
   },
   "devDependencies": {
-    "nodemon": "1.17.5",
+    "nodemon": "1.18.0",
     "prettier": "1.13.5"
   },
   "scripts": {
