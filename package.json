@@ -7,6 +7,7 @@
     "dotenv": "6.0.0",
     "graphql-request": "1.6.0",
     "node-fetch": "2.1.2",
+    "pretty-quick": "^1.6.0",
     "twit": "2.2.11",
     "unique-random-array": "1.0.1"
   },
@@ -15,12 +16,14 @@
   },
   "devDependencies": {
     "nodemon": "1.18.3",
-    "prettier": "1.13.5"
+    "prettier": "^1.13.5"
   },
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "delete": "node dbDeleteTweets"
+    "delete": "node dbDeleteTweets",
+    "format": "pretty-quick",
+    "precommit": "pretty-quick --staged"
   },
   "repository": {
     "type": "git",
