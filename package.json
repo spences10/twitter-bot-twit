@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "nodemon": "1.18.4",
-    "prettier": "1.14.2"
+    "prettier": "1.14.3"
   },
   "scripts": {
     "dev": "nodemon index.js",
